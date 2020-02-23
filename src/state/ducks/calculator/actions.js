@@ -2,7 +2,9 @@ export const addKey = name => (dispatch, getState) => {
   const operators = ['+', '-', '*', '/']
   let expression = getState().calculator.expression.substring(0)
 
-  if (name === 'negate') {
+  if (['0', '- 0'].includes(expression) && (name >= '1' || name <= '9')) {
+    expression = `${expression.substring(0, expression.length - 1)}${name}`
+  } if (name === 'negate') {
     if (expression[0] === '-') {
       expression = expression.substring(1)
     } else expression = `- ${expression}`
@@ -23,7 +25,7 @@ export const equals = () => (dispatch, getState) => {
   const expression = getState().calculator.expression.replace(/%/g, '/100')
   dispatch({
     type: 'EQUALS',
-    payload: eval(expression),
+    payload: eval(expression).toString(),
   })
 }
 

@@ -1,6 +1,5 @@
 const initialState = {
-  expression: '',
-  result: undefined,
+  expression: '0',
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,14 +12,12 @@ const reducer = (state = initialState, action) => {
     case 'EQUALS':
       return {
         ...state,
-        expression: '',
-        result: action.payload,
+        expression: action.payload,
       }
     case 'CLEAR':
       return {
         ...state,
-        expression: '',
-        result: undefined,
+        expression: '0',
       }
     default:
       return {
