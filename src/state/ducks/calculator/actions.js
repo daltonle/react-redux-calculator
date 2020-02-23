@@ -4,9 +4,9 @@ export const addKey = name => (dispatch, getState) => {
   const operators = ['+', '-', '*', '/']
   let expression = getState().calculator.expression.substring(0)
 
-  if (['0', '- 0'].includes(expression) && (name >= '1' || name <= '9')) {
+  if (['0', '- 0'].includes(expression) && name.charCodeAt(0) >= 48 && name.charCodeAt(0) <= 57) {
     expression = `${expression.substring(0, expression.length - 1)}${name}`
-  } if (name === 'negate') {
+  } else if (name === 'negate') {
     if (expression[0] === '-') {
       expression = expression.substring(1)
     } else expression = `- ${expression}`
