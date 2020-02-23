@@ -18,7 +18,11 @@ class HistoryPage extends Component {
     return history.map(({ expression, result }, idx) => (
       <div className={styles.entry} key={idx}>
         <span>{expression}</span>
-        <span> = {result}</span>
+        <span>
+          {' '}
+          =
+          {result}
+        </span>
       </div>
     ))
   }
