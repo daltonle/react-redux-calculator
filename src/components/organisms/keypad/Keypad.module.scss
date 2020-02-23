@@ -3,6 +3,14 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   padding: .5rem;
+
+  &.sci {
+    grid-template-columns: repeat(10, 1fr);
+
+    .keypadButton {
+      font-size: 1.25rem;
+    }
+  }
 }
 
 .keypadButtonContainer {

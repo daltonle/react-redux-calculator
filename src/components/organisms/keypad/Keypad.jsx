@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { buttonList } from './buttonList'
+import { basicButtonList, scientificButtonList } from './buttonList'
 import KeypadButton from '../../atoms/button'
 import { addKey, equals, clear } from '../../../state/ducks/calculator/actions'
 
@@ -19,8 +19,13 @@ class Keypad extends Component {
     }
   }
 
-  renderKeypadButtons = () => (
-    buttonList.map(({ name, color, length }) => {
+  renderKeypadButtons = () => {
+    const { type } = this.props
+    let buttonList
+    if (type === 'scientific') buttonList = scientificButtonList
+    else if (type === 'basic') buttonList = basicButtonList
+
+    return buttonList.map(({ name, color, length }) => {
       const classname = `${styles.keypadButtonContainer} ${length === 2 ? styles.length2 : ''}`
       return (
         <div key={name} className={classname}>
@@ -41,11 +46,12 @@ class Keypad extends Component {
         </div>
       )
     })
-  )
+  }
 
   render() {
+    const { type } = this.props
     return (
-      <div className={styles.keypad}>
+      <div className={`${styles.keypad}  ${type === 'scientific' ? styles.sci : ''}`}>
         {this.renderKeypadButtons()}
       </div>
     )
@@ -53,14 +59,15 @@ class Keypad extends Component {
 }
 
 Keypad.propTypes = {
+  type: PropTypes.string,
   addKeyConnect: PropTypes.func.isRequired,
   equalsConnect: PropTypes.func.isRequired,
   clearConnect: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+Keypad.defaultProps = {
+  type: 'basic',
+}
 
 const mapDispatchToProps = {
   addKeyConnect: addKey,
@@ -68,4 +75,4 @@ const mapDispatchToProps = {
   clearConnect: clear,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Keypad)
+export default connect(null, mapDispatchToProps)(Keypad)
