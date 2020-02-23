@@ -1,4 +1,5 @@
 import { evaluate } from 'mathjs'
+import { addHistoryEntry } from '../history/actions'
 
 export const addKey = name => (dispatch, getState) => {
   const operators = ['+', '-', '*', '/']
@@ -43,6 +44,7 @@ export const equals = () => (dispatch, getState) => {
       type: 'EQUALS',
       payload: result.toString(),
     })
+    addHistoryEntry(expression, result)(dispatch)
   } catch (err) {
     dispatch({
       type: 'ERROR',
