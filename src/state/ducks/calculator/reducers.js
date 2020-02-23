@@ -8,7 +8,7 @@ const reducer = (state = initialState, action) => {
     case 'ADD_KEY':
       return {
         ...state,
-        expression: state.expression + action.payload,
+        expression: action.payload,
       }
     case 'EQUALS':
       return {
