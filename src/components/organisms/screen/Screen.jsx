@@ -4,24 +4,20 @@ import { connect } from 'react-redux'
 
 import styles from './Screen.module.scss'
 
-const Screen = ({ expression, result }) => (
-  <div className={styles.screen}>
-    {result === undefined ? expression : result}
+const Screen = ({ expression, hasError }) => (
+  <div className={`${styles.screen} ${hasError ? styles.error : ''}`}>
+    {hasError ? 'Error' : expression}
   </div>
 )
 
 Screen.propTypes = {
   expression: PropTypes.string.isRequired,
-  result: PropTypes.number,
-}
-
-Screen.defaultProps = {
-  result: undefined,
+  hasError: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   expression: state.calculator.expression,
-  result: state.calculator.result,
+  hasError: state.calculator.hasError,
 })
 
 export default connect(mapStateToProps, {})(Screen)

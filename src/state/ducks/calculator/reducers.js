@@ -1,5 +1,6 @@
 const initialState = {
   expression: '0',
+  hasError: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -8,6 +9,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         expression: action.payload,
+        hasError: false,
       }
     case 'EQUALS':
       return {
@@ -18,6 +20,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         expression: '0',
+      }
+    case 'ERROR':
+      return {
+        ...state,
+        expression: '',
+        hasError: true,
       }
     default:
       return {

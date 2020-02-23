@@ -4,6 +4,14 @@ export const addKey = name => (dispatch, getState) => {
   const operators = ['+', '-', '*', '/']
   let expression = getState().calculator.expression.substring(0)
 
+  if (expression === 'Infinity') {
+    dispatch({
+      type: 'ADD_KEY',
+      payload: name,
+    })
+    return
+  }
+
   if (['0', '- 0'].includes(expression) && name.charCodeAt(0) >= 48 && name.charCodeAt(0) <= 57) {
     expression = `${expression.substring(0, expression.length - 1)}${name}`
   } else if (name === 'negate') {
@@ -25,10 +33,21 @@ export const addKey = name => (dispatch, getState) => {
 
 export const equals = () => (dispatch, getState) => {
   const expression = getState().calculator.expression.replace(/%/g, '/100')
-  dispatch({
-    type: 'EQUALS',
-    payload: evaluate(expression).toString(),
-  })
+  let result
+  try {
+    result = evaluate(expression)
+    if (Number.isNaN(result)) {
+      throw new Error('Not a number')
+    }
+    dispatch({
+      type: 'EQUALS',
+      payload: result.toString(),
+    })
+  } catch (err) {
+    dispatch({
+      type: 'ERROR',
+    })
+  }
 }
 
 export const clear = () => dispatch => {
