@@ -1,3 +1,5 @@
+@import '../../../styles/typography';
+
 .keypad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -8,7 +10,7 @@
     grid-template-columns: repeat(10, 1fr);
 
     .keypadButton {
-      font-size: 1.25rem;
+      font-size: $text-size-small;
     }
   }
 }

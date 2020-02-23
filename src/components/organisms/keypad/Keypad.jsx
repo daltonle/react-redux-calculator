@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { basicButtonList, scientificButtonList } from './buttonList'
-import KeypadButton from '../../atoms/button'
+import { KeypadButton } from '../../atoms/button'
 import { addKey, equals, clear } from '../../../state/ducks/calculator/actions'
 
 import styles from './Keypad.module.scss'

@@ -1,0 +1,29 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.button {
+  border: none;
+  outline: none;
+  width: 7rem;
+  height: 2.5rem;
+  padding: 0 .75rem;
+  border-radius: 6px;
+  transition: ease-in-out .4s;
+  cursor: pointer;
+
+  font-size: $text-size-small;
+  font-family: $font-primary;
+  font-weight: 300;
+  color: $grey-300;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba($color: $white, $alpha: 0.3);
+  }
+}

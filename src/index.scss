@@ -20,3 +20,22 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+a {
+  font-size: $text-size-small;
+  font-family: $font-primary;
+  text-decoration: none;
+  color: $grey-300;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h4 {
+  font-size: $text-size-small;
+  font-family: $font-primary;
+  color: $grey-300;
+  margin: 0;
+}

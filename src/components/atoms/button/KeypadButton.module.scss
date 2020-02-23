@@ -10,7 +10,7 @@
   transition: ease-in-out .4s;
   cursor: pointer;
 
-  font-size: $text-size-keypad;
+  font-size: $text-size-med;
   font-family: $font-monospace;
   font-weight: 300;
   color: $white;
@@ -23,6 +23,10 @@
 
 .orange {
   background-color: $orange;
+
+  &:hover {
+    background-color: darken($color: $orange, $amount: 0.7);
+  }
 }
 
 .grey300 {
