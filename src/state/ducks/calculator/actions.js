@@ -1,3 +1,5 @@
+import { evaluate } from 'mathjs'
+
 export const addKey = name => (dispatch, getState) => {
   const operators = ['+', '-', '*', '/']
   let expression = getState().calculator.expression.substring(0)
@@ -25,7 +27,7 @@ export const equals = () => (dispatch, getState) => {
   const expression = getState().calculator.expression.replace(/%/g, '/100')
   dispatch({
     type: 'EQUALS',
-    payload: eval(expression).toString(),
+    payload: evaluate(expression).toString(),
   })
 }
 
