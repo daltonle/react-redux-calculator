@@ -1,0 +1,39 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.button {
+  border: none;
+  outline: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 3rem;
+  transition: ease-in-out .4s;
+  cursor: pointer;
+
+  font-size: $text-size-keypad;
+  font-family: $font-monospace;
+  font-weight: 300;
+  color: $white;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.orange {
+  background-color: $orange;
+}
+
+.grey300 {
+  background-color: $grey-300;
+  color: $black;
+}
+
+.grey600 {
+  background-color: $grey-600;
+}
+
+.grey800 {
+  background-color: $grey-800;
+}

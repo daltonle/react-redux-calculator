@@ -1,9 +1,17 @@
 @import './styles/colors';
 @import './styles/typography';
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: $font-primary;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: $white;
+  background-color: $black;
 }
